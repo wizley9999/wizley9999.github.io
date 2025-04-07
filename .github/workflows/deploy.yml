@@ -1,7 +1,7 @@
 name: Deploy GitHub Pages site
 
 on:
-  workflow_patch:
+  workflow_dispatch:
 
 jobs:
   build:
