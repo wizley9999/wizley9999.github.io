@@ -1,1 +1,1 @@
-Check in here: [wizley.io](https://wizely.io)
+Follow here: **[wizley9999/wizora](https://github.com/wizley9999/wizora)**
