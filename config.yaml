@@ -3,6 +3,10 @@ base: "https://wizley.io"
 author:
   name: "Wizley"
   github: "wizley9999"
+  identities:
+    - "Y.S. Lee"
+    - "Software Developer"
+  tagline: "A passionate Software Developer with a focus on cybersecurity."
 
 giscus:
   repo: "wizley9999/wizley9999.github.io"
