@@ -238,3 +238,44 @@ Exception catch는 항상 사용하던 느낌 그대로 사용하면 될 것 같
 그럼 사실 try, catch에 있는 return은 `unreachable`하다고 보는 게 맞다. (물론 조건 분기가 있다면 실행이 될 수도 있겠지만..)
 
 그러니 무조건 finally는 항상 실행이 됨을 기억하자.
+
+## 제네릭? 타입이 도망가버렸어요!
+
+자바의 제네릭은 컴파일 타임에만 존재한다는 특징이 있다. 다시 말해, 런타임에는 타입을 전혀 신경쓰지 않는다는 말이다.
+
+제네릭은 컴파일러가 타입을 검사하는 데만 사용되고, JVM에는 실제 타입 정보가 전달되지 않는다.
+
+그래서 런타임에는 타입이 가장 최상위 클래스인 `Object`로 대체된다.
+
+이를 "타입 소거"라고 부른다.
+
+```java
+class Box<T> {
+    T value;
+
+    public Box(T value) {
+        this.value = value;
+        this.print(value);
+    }
+
+    public void print(Integer x) {
+        System.out.println("Integer");
+    }
+
+    public void print(Object x) {
+        System.out.println("Object");
+    }
+}
+```
+
+위와 같은 `Box` 제네릭 클래스가 있다.
+
+```java
+Box<Integer> box = new Box<>(123);
+```
+
+자, 오버로딩된 메소드이 출력의 결과가 뭘까? 바로바로 앞서 얘기했듯이 `Object`가 출력된다.
+
+이게 타입 소거다.
+
+> 솔직히 이건 컴파일 타임을 먼저 알아봐야 오히려 이해하기 쉬울 것 같다. 인터넷에 제네릭 컴파일 타임에 대한 내용들이 많이 있으니 검색해서 보길 추천한다.
